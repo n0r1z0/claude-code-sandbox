@@ -1,73 +1,72 @@
 # CLAUDE.md
 
-This file provides guidance for AI assistants (like Claude) working in this repository.
+このファイルは、リポジトリ内で作業する AI アシスタント（Claude など）向けのガイドです。
 
-## Repository Overview
+## リポジトリ概要
 
-**Repository:** `n0r1z0/claude-code-sandbox`
-**Purpose:** A sandbox environment for experimenting with Claude Code workflows, tooling, and automation.
+**リポジトリ:** `n0r1z0/claude-code-sandbox`
+**目的:** Claude Code のワークフロー・ツール・自動化を試すためのサンドボックス環境。
 
-This repository is currently in its initial state. As code and structure are added, update this file to reflect the actual codebase.
+現在は初期状態です。コードや構成が追加されたら、このファイルを更新してください。
 
-## Repository Structure
+## ディレクトリ構成
 
 ```
 claude-code-sandbox/
-└── CLAUDE.md          # This file — AI assistant guidance
+└── CLAUDE.md          # このファイル — AI アシスタント向けガイド
 ```
 
-As the project grows, document new directories and their purposes here.
+プロジェクトが成長したら、新しいディレクトリとその役割をここに追記してください。
 
-## Git Workflow
+## Git ワークフロー
 
-### Branch Naming
-- Feature/task branches follow the pattern: `claude/<description>-<session-id>`
-- Example: `claude/claude-md-mmc78t179xoqhbns-9zs04`
+### ブランチ命名規則
+- ブランチ名のパターン: `claude/<説明>-<セッションID>`
+- 例: `claude/claude-md-mmc78t179xoqhbns-9zs04`
 
-### Commit Conventions
-- Write clear, descriptive commit messages in the imperative mood
-- Keep commits focused on a single logical change
-- Example: `Add initial project structure` not `Added stuff`
+### コミットの規則
+- コミットメッセージは命令形で簡潔に書く
+- 1 コミット = 1 つの論理的な変更に絞る
+- 良い例: `Add initial project structure` / 悪い例: `Added stuff`
 
-### Push Protocol
-- Always use `git push -u origin <branch-name>` for first push of a branch
-- Branch names must start with `claude/` and end with the matching session ID, or push will fail with HTTP 403
-- If push fails due to network errors, retry up to 4 times with exponential backoff (2s, 4s, 8s, 16s)
+### プッシュの手順
+- ブランチの初回プッシュは必ず `git push -u origin <ブランチ名>` を使う
+- ブランチ名が `claude/` で始まり、対応するセッション ID で終わっていないと HTTP 403 で失敗する
+- ネットワークエラーで失敗した場合は、指数バックオフ（2秒→4秒→8秒→16秒）で最大 4 回リトライする
 
-## Development Guidelines for AI Assistants
+## AI アシスタント向け開発ガイドライン
 
-### General Principles
-- Read files before editing them — never propose changes to code you haven't read
-- Prefer editing existing files over creating new ones
-- Avoid over-engineering: implement only what is directly requested
-- Do not add comments, docstrings, or type annotations to code you didn't change
-- Keep solutions minimal and focused
+### 基本原則
+- ファイルを編集する前に必ず読む — 読んでいないコードへの変更を提案しない
+- 新規ファイルの作成より既存ファイルの編集を優先する
+- 過度な設計をしない: 依頼されたことだけを実装する
+- 変更していないコードにコメント・docstring・型注釈を追加しない
+- 解決策はシンプルかつ最小限に保つ
 
-### Security
-- Never introduce command injection, XSS, SQL injection, or other OWASP Top 10 vulnerabilities
-- Validate input only at system boundaries (user input, external APIs)
-- Do not commit secrets, credentials, or `.env` files
+### セキュリティ
+- コマンドインジェクション・XSS・SQL インジェクションなど OWASP Top 10 の脆弱性を混入させない
+- 入力値の検証はシステム境界（ユーザー入力・外部 API）でのみ行う
+- シークレット・認証情報・`.env` ファイルをコミットしない
 
-### Risky Actions — Always Confirm First
-Before performing any of the following, confirm with the user:
-- Deleting files, branches, or data
-- Force-pushing or amending published commits
-- Pushing to remote branches
-- Modifying CI/CD pipelines or shared infrastructure
-- Actions visible to others (creating PRs, posting comments, sending messages)
+### 要確認の操作 — 必ずユーザーに確認してから実行すること
+- ファイル・ブランチ・データの削除
+- 公開済みコミットのフォースプッシュや amend
+- リモートブランチへのプッシュ
+- CI/CD パイプラインや共有インフラの変更
+- 他者から見える操作（PR 作成・コメント投稿・メッセージ送信など）
 
-## Working with This Sandbox
+## このサンドボックスについて
 
-Since this is a sandbox repository, it is safe to experiment. However, good habits still apply:
-- Document what you build in this file as the project evolves
-- Keep the git history clean and meaningful
-- Treat each experiment as if it could become production code
+サンドボックスリポジトリなので自由に実験できます。ただし、良い習慣は常に守ってください:
+- 作ったものはこのファイルに記録する
+- Git の履歴は整理された意味のある状態を保つ
+- 各実験は本番コードになり得るという意識で書く
 
-## Updating This File
+## このファイルの更新について
 
-When the codebase changes significantly, update this CLAUDE.md to reflect:
-- New directories and their purposes
-- Dependencies and how to install them
-- Build, test, and lint commands
-- Environment variables required
-- Any project-specific conventions or gotchas
+コードベースに大きな変化があった場合は、以下を反映するよう CLAUDE.md を更新してください:
+- 新しいディレクトリとその役割
+- 依存関係とインストール方法
+- ビルド・テスト・lint のコマンド
+- 必要な環境変数
+- プロジェクト固有の規約や注意点
